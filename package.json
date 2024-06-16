@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Upload static files and deploy it locally",
   "main": "index.ts",
-  "type": "module",
   "scripts": {
     "build": "tsc && tsc-alias",
     "check": "tsc -p tsconfig.json --noEmit",
