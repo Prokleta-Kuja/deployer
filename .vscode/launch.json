@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "API",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "env": {
+        "IS_DEV": "true",
+        "SITE_PATH_test": "test-site",
+        "SITE_PASS_test": "P@ssw0rd",
+        "SITE_PATH_test2": "test-site2",
+        "SITE_PASS_test2": "P@ssw0rd2"
+      }
+    }
+  ]
+}

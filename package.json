@@ -1,0 +1,29 @@
+{
+  "name": "deployer",
+  "version": "1.0.0",
+  "description": "Upload static files and deploy it locally",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsx watch --tsconfig tsconfig.json ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "prokleta-kuja",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fastify/multipart": "8.3.0",
+    "fastify": "4.28.0",
+    "fastify-type-provider-zod": "1.2.0",
+    "tar-fs": "3.0.6",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.2",
+    "@types/tar-fs": "2.0.4",
+    "tsc-alias": "1.8.10",
+    "tsx": "4.15.5",
+    "typescript": "5.4.5"
+  }
+}
