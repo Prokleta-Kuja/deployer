@@ -3,11 +3,9 @@ env:
   REGISTRY_IMAGE: ghcr.io/prokleta-kuja/deployer
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Version to tag image with"
-        required: true
-        default: "0.0.1"
+  push:
+    branches:
+      - "main"
 
 jobs:
   build:
@@ -35,4 +33,3 @@ jobs:
             ${{ env.REGISTRY_IMAGE }}:latest
             ${{ env.REGISTRY_IMAGE }}:${{ env.DATE }}
             ${{ env.REGISTRY_IMAGE }}:${{ github.RUN_NUMBER }}
-            ${{ env.REGISTRY_IMAGE }}:${{ github.event.inputs.version }}
