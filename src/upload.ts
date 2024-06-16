@@ -33,7 +33,9 @@ export const upload = async (fastify: FastifyInstance, _options: Object) => {
       const sitePath = passwordPaths.get(authParts[1]);
       if (!sitePath) return res.code(401).send("Failed to authenticate");
 
-      console.log(`Received a valid request for ${sitePath}`);
+      console.log(
+        `${new Date().toISOString()} - Received a valid request for ${sitePath}`
+      );
 
       const parts = req.files({ limits: { fileSize: 1024 * 1024 * 1000 } }); // 1GB //TODO: move to env
       for await (const part of parts) {
@@ -50,14 +52,18 @@ export const upload = async (fastify: FastifyInstance, _options: Object) => {
             );
             await unlink(siteDir).catch(() => {});
             await rename(siteTempDir, siteDir);
-            console.log(`Deployed ${sitePath}`);
+            console.log(`${new Date().toISOString()} - Deployed ${sitePath}`);
           } else
             return res
               .code(400)
               .send(`Unsupported file extension '${parsedPath.ext}'`);
         } catch (error) {
-          console.error("Failed to save upload");
+          console.error(
+            `${new Date().toISOString()} - Failed to save upload`,
+            error
+          );
           unlink(siteTempDir).catch(() => {});
+          return res.code(500).send("Something went wrong");
         }
 
         res.code(200).send("Deployed");
